@@ -15,3 +15,12 @@ steps:
     command: 'buildAndPush'
     Dockerfile: 'Dockerfile'
     buildContext: '$(Build.ArtifactStagingDirectory)'
+
+- task: UniversalPackages@0
+  inputs:
+    command: 'publish'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '6b0fbd8a-05ec-4d92-8b85-4c4db10b1abc'
+    vstsFeedPackagePublish: 'nginx'
+    versionOption: 'major'
